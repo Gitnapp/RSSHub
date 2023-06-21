@@ -68,6 +68,16 @@ pageClass: routes
 
 <Route author="nczitzk" example="/36kr/search/newsflashes/ofo" path="/36kr/search/newsflashes/:keyword" :paramsDesc="['关键字']" />
 
+### 资讯热榜
+
+<Route author="nczitzk" example="/36kr/hot-list" path="/36kr/hot-list/:category?" :paramsDesc="['分类，默认为24小时热榜']">
+
+| 24 小时热榜 | 资讯人气榜 | 资讯综合榜 | 资讯收藏榜 |
+| ----------- | ---------- | ---------- | ---------- |
+| 24          | renqi      | zonghe     | shoucang   |
+
+</Route>
+
 ## 52hrtt 华人头条
 
 ### 新闻
@@ -135,19 +145,19 @@ pageClass: routes
 
 ## AEON
 
-<Route author="emdoe" example="/aeon/ideas" path="/aeon/:category" :paramsDesc="['类别']">
+### 类型
 
-支持以文体分类：
+<Route author="emdoe" example="/aeon/essays" path="/aeon/:type" :paramsDesc="['类别']">
 
-| Ideas | Essays | Videos |
-| ----- | ------ | ------ |
-| ideas | essays | videos |
+支持获取 Essays, Videos, 以及 Audio. 但 Audio 仅输出正文内容，并不包括音轨链接。
 
-同样支持以话题分类：
+</Route>
 
-| Culture | Philosophy | Psychology | Society | Science |
-| ------- | ---------- | ---------- | ------- | ------- |
-| culture | philosophy | psychology | society | science |
+### 分类
+
+<Route author="emdoe" example="/aeon/category/philosophy" path="/aeon/category/:category" :paramsDesc="['分类']">
+
+支持获取的分类包括: Philosophy, Science, Psychology, Society, 以及 Culture.
 
 </Route>
 
@@ -1489,6 +1499,33 @@ Provides all of the Thrillist articles with the specified tag.
 
 <Route author="Rongronggg9" example="/tribalfootball" path="/tribalfootball" />
 
+## UNTAG
+
+### 时间线
+
+<Route author="nczitzk" example="/utgd/timeline" path="/utgd/timeline" />
+
+### 分类
+
+<Route author="nczitzk" example="/utgd/method" path="/utgd/:category?" :paramsDesc="['分类，可在对应分类页的 URL 中找到，默认为方法']">
+
+| 方法   | 观点    |
+| ------ | ------- |
+| method | opinion |
+
+</Route>
+
+### 专题
+
+<Route author="nczitzk" example="/utgd/topic/在线阅读专栏" path="/utgd/topic/:topic?" :paramsDesc="['专题，默认为在线阅读专栏']">
+
+| 在线阅读专栏 | 卡片笔记专题 |
+| ------------ | ------------ |
+
+更多专栏请见 [专题广场](https://utgd.net/topic)
+
+</Route>
+
 ## Uwants
 
 ### 版塊
@@ -1710,7 +1747,7 @@ Supported sub-sites:
 
 ### 櫻坂 46 博客
 
-<Route author="victor21813 nczitzk" example="/sakurazaka46/blog" path="/sakurazaka46/blog/:id?" :paramsDesc="['成员编号，见下表，默认为全部']">
+<Route author="victor21813 nczitzk akashigakki" example="/sakurazaka46/blog" path="/sakurazaka46/blog/:id?/:page?" :paramsDesc="['成员编号，见下表，默认为`all` (全部)', '订阅页码，默认为`0` (第一页)']">
 
 | 编号 | 姓名        |
 | ---- | ----------- |
